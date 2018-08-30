@@ -1,0 +1,6 @@
+.vs
+.vscode
+src/Cubo.Api/bin
+src/Cubo.Api/obj
+src/Cubo.Core/bin
+src/Cubo.Core/obj
