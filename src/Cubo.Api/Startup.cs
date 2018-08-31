@@ -1,4 +1,5 @@
-﻿using Cubo.Core.Mappers;
+﻿using Cubo.Api.Middleware;
+using Cubo.Core.Mappers;
 using Cubo.Core.Repositories;
 using Cubo.Core.Services;
 using Microsoft.AspNetCore.Builder;
@@ -22,7 +23,7 @@ namespace Cubo.Api
         {
             services.AddMvc();
 
-            services.AddScoped<IBucketRepository, InMemoryBucketRepository>();
+            services.AddSingleton<IBucketRepository, InMemoryBucketRepository>();
             services.AddScoped<IBucketService, BucketService>();
             services.AddScoped<IITemService, ItemService>();
 
@@ -36,6 +37,8 @@ namespace Cubo.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMiddleware<ErrorHandlerMiddleware>();
 
             app.UseMvc();
         }

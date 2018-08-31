@@ -35,7 +35,7 @@ namespace Cubo.Core.Services
 
             if (bucket != null)
             {
-                throw new Exception($"Bucket: '{name}' already exists.");
+                throw new CuboException("bucket_already_exists", $"Bucket: '{name}' already exists.");
             }
 
             bucket = new Bucket(Guid.NewGuid(), name);

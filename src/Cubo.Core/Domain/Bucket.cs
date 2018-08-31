@@ -7,13 +7,21 @@ namespace Cubo.Core.Domain
     // Aggregate Root
     public class Bucket : Entity
     {
-        private readonly ISet<Item> _items = new HashSet<Item>();
+        private ISet<Item> _items = new HashSet<Item>();
 
         public string Name { get; protected set; }
 
         public DateTime CreatedAt { get; protected set; }
 
-        public IEnumerable<Item> Items { get; protected set; }
+        public IEnumerable<Item> Items
+        {
+            get => _items;
+            set
+            {
+                if (value == null) throw new ArgumentNullException(nameof(value));
+                _items = new HashSet<Item>();
+            }
+        }
 
         protected Bucket()
         {
@@ -23,6 +31,7 @@ namespace Cubo.Core.Domain
         {
             Id = id;
             Name = name;
+            CreatedAt = DateTime.Now;
         }
 
         public void AddItem(string key, string value)
@@ -31,7 +40,7 @@ namespace Cubo.Core.Domain
 
             if (Items.Any(x => x.Key == fixedKey))
             {
-                throw new Exception($"Item: '{key}' already exists in a bucket: '{Name}'.");
+                throw new CuboException("item_already_exists", $"Item: '{key}' already exists in a bucket: '{Name}'.");
             }
 
             _items.Add(new Item(key, value));
@@ -50,7 +59,7 @@ namespace Cubo.Core.Domain
 
             if (item == null)
             {
-                throw new Exception($"Item: '{key}' was not found in a bucket: '{Name}'.");
+                throw new CuboException("item_not_found", $"Item: '{key}' was not found in a bucket: '{Name}'.");
             }
 
             return item;

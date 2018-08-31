@@ -12,7 +12,7 @@ namespace Cubo.Core.Repositories
 
             if (bucket == null)
             {
-                throw new Exception($"Bucket: '{name}' was not found.");
+                throw new CuboException("bucket_not_found", $"Bucket: '{name}' was not found.");
             }
 
             return bucket;
