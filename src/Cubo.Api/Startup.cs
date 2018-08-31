@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Cubo.Core.Mappers;
+using Cubo.Core.Repositories;
+using Cubo.Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace Cubo.Api
 {
@@ -24,6 +21,12 @@ namespace Cubo.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddScoped<IBucketRepository, InMemoryBucketRepository>();
+            services.AddScoped<IBucketService, BucketService>();
+            services.AddScoped<IITemService, ItemService>();
+
+            services.AddSingleton(_ => AutoMapperConfig.GetMapper());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Cubo.Core.Domain;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Cubo.Core.Domain;
 
 namespace Cubo.Core.Repositories
 {

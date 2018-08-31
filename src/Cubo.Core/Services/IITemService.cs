@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Cubo.Core.DTO;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cubo.Core.Services

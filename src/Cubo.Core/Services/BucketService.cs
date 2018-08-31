@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Cubo.Core.Domain;
 using Cubo.Core.DTO;
 using Cubo.Core.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Cubo.Core.Services
 {
-    internal class BucketService : IBucketService
+    public class BucketService : IBucketService
     {
         private readonly IBucketRepository _bucketRepository;
 

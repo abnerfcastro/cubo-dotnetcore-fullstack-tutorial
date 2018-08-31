@@ -6,7 +6,7 @@ namespace Cubo.Core.Domain
     {
         public Guid Id { get; protected set; }
 
-        public string Key {get; protected set; }
+        public string Key { get; protected set; }
 
         public string Value { get; protected set; }
 

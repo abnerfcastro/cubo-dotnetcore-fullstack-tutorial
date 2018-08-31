@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Cubo.Core.Domain;
 using Cubo.Core.DTO;
+using System.Linq;
 
 namespace Cubo.Core.Mappers
 {
